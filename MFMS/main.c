@@ -1,39 +1,49 @@
-#ifndef FUNCTIONS_H
-#define FUNCTIONS_H
+#include <stdio.h>
+#include "employees.h"
+#include "budget.h"
+#include "suppliers.h"
+#include "assets.h"
+#include "reports.h"
 
+int main(void) {
+    int choice;
 
-//Employee Management 
-void employeeMenu(void);
-void addEmployee(void);
-void displayEmployees(void);
-void searchEmployee(void);
-double calculateSalary(double basicSalary, double housing, double transport);
+    do {
+        printf("\n====================================\n");
+        printf(" MUNICIPAL FINANCIAL MANAGEMENT SYSTEM\n");
+        printf("====================================\n");
+        printf("1. Employee Management\n");
+        printf("2. Budget Management\n");
+        printf("3. Supplier Management\n");
+        printf("4. Asset Management\n");
+        printf("5. Reports\n");
+        printf("6. Exit\n");
+        choice = readInt("Enter your choice: ", 1, 6);
 
-//Budget Management 
-void budgetMenu(void);
-void addBudget(void);
-void displayBudgets(void);
-void displayBudgetReport(void);
-double calculateBudget(double budget, double expenditure);
+        switch (choice) {
+            case 1:
+                employeeMenu();
+                break;
+            case 2:
+                budgetMenu();
+                break;
+            case 3:
+                supplierMenu();
+                break;
+            case 4:
+                assetMenu();
+                break;
+            case 5:
+                reportsMenu();
+                break;
+            case 6:
+                printf("Goodbye.\n");
+                break;
+            default:
+                printf("Invalid choice.\n");
+                break;
+        }
+    } while (choice != 6);
 
-//Supplier Management 
-void supplierMenu(void);
-void addSupplier(void);
-void displaySuppliers(void);
-void searchSupplier(void);
-
-//Asset Management 
-int readInt(const char *prompt, int min, int max);
-void addAsset(void);
-void displayAssets(void);
-void searchAsset(void);
-void assetMenu(void);
-
-//Reports Module 
-void reportsMenu(void);
-void employeeReport(void);
-void budgetReport(void);
-void supplierReport(void);
-void assetReport(void);
-
-#endif
+    return 0;
+}

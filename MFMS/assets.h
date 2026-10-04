@@ -19,6 +19,7 @@ int readInt(const char *prompt, int min, int max);
 
 void addAsset(void);
 void displayAssets(void);
+void displayAsset(void);
 void searchAsset(void);
 void assetMenu(void);
 
