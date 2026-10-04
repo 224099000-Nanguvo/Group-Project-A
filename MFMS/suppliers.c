@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "suppliers.h"
+#include "supplier.h"
 #include <stdlib.h>
 
 
@@ -78,7 +78,7 @@ fgets(s.suppAddr, sizeof(s.suppAddr), stdin);
 s.suppAddr[strcspn(s.suppAddr, "\n")] = '\0';
 
 
-suppliers[supplierCount++] = s;
+supplier[supplierCount++] = s;
 
 printf("==============================================================\n ");
 printf("\n Continue to Register Section \n");
