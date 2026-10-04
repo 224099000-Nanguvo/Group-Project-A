@@ -1,16 +1,10 @@
-#ifndef SUPPLIER_H
-#define SUPPLIER_H
-
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-
+#ifndef SUPPLIERS_H
+#define SUPPLIERS_H
 
 #define MAX_SUPPLIERS 60
 
-typedef struct {
-
-    
+typedef struct
+{
     int suppID;
     char suppName[60];
     char suppEmail1[40];
@@ -19,20 +13,16 @@ typedef struct {
     char suppPhone2[15];
     char suppTown[30];
     char suppAddr[50];
-    char searchName[60];
-
-
+    
 } Supplier;
 
+extern Supplier suppliers[MAX_SUPPLIERS];.
 
-extern Supplier suppliers[MAX_SUPPLIERS];
 extern int supplierCount;
 
-
 void addSupplier(void);
+void viewSuppliers(void);
 void searchSupplier(void);
-void compareSuppliers(void);
-void displayMenu(void);
-
+void supplierMenu(void);
 
 #endif
