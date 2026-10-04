@@ -1,25 +1,20 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "supplier.h"
 #include <stdlib.h>
 
+Supplier suppliers[MAX_SUPPLIERS];
 
-typedef struct {
-int suppID;
-char suppName[60];
-char suppEmail1[40];
-char suppEmail2[40];
-char suppPhone1[15];
-char suppPhone2[15];
-char suppTown[30];
-char suppAddr[50];
-char searchName [60];
 
+int supplierCount = 0;
 
 } 
 
-Supplier suppliers[60];  
-int supplierCount = 0;
+void addSupplier(void);
+void viewSuppliers(void);
+void searchSupplier(void);
+void supplierMenu(void);
 
 int main() {
 int choice;
@@ -126,77 +121,142 @@ printf("\nIf You Would like to Register Please Visit the Main Menu\n");
 printf("\n Continue to Register Section  \n ");
 printf("==============================================================\n ");
 
+void addSupplier(void)
+{
+    if (supplierCount >= MAX_SUPPLIERS)
+    {
+        printf("\nMaximum supplier limit reached!\n");
+        return;
+    }
+
+    Supplier *s = &suppliers[supplierCount];
+
+    s->suppID = supplierCount + 1;
+
+    printf("\nEnter Supplier Name: ");
+    scanf(" %[^\n]", s->suppName);
+
+    printf("Enter Primary Email: ");
+    scanf("%s", s->suppEmail1);
+
+    printf("Enter Secondary Email: ");
+    scanf("%s", s->suppEmail2);
+
+    printf("Enter Primary Phone: ");
+    scanf("%s", s->suppPhone1);
+
+    printf("Enter Secondary Phone: ");
+    scanf("%s", s->suppPhone2);
+
+    printf("Enter Town: ");
+    scanf(" %[^\n]", s->suppTown);
+
+    printf("Enter Address: ");
+    scanf(" %[^\n]", s->suppAddr);
+
+    supplierCount++;
+
+    printf("\nSupplier added successfully.\n");
 }
- }
-
-else 
-if (choice == 3) {
- printf("\n SUPPLIERS COMPARISON SECTION \n");
-printf("==============================================================\n ");
-
-char name1[60], name2[60];
-printf("Enter first supplier name: ");
-fgets(name1, sizeof(name1), stdin);
-name1[strcspn(name1, "\n")] = '\0';
-
-printf("Enter second supplier name: ");
-fgets(name2, sizeof(name2), stdin);
-name2[strcspn(name2, "\n")] = '\0';
-
-Supplier *s1 = NULL, *s2 = NULL;
-
-for (int i = 0; i < supplierCount; i++) {
-
-if (strcmp(suppliers[i].suppName, name1) == 0) {
-s1 = &suppliers[i];
-
-  }
-if (strcmp(suppliers[i].suppName, name2) == 0) {
-
- s2 = &suppliers[i];
- 
-   }
- 
-  }
-
-if (s1 && s2) {
 
 
-printf("\n%-15s %-25s %-25s\n", "Field", "Supplier 1", "Supplier 2");
-printf("==============================================================\n ");
-printf("%-15s %-25d %-25d\n", "ID", s1->suppID, s2->suppID);
-printf("%-15s %-25s %-25s\n", "Name", s1->suppName, s2->suppName);
-printf("%-15s %-25s %-25s\n", "Email1", s1->suppEmail1, s2->suppEmail1);
-printf("%-15s %-25s %-25s\n", "Email2", s1->suppEmail2, s2->suppEmail2);
-printf("%-15s %-25s %-25s\n", "Phone1", s1->suppPhone1, s2->suppPhone1);
-printf("%-15s %-25s %-25s\n", "Phone2", s1->suppPhone2, s2->suppPhone2);
-printf("%-15s %-25s %-25s\n", "Town", s1->suppTown, s2->suppTown);
-printf("%-15s %-25s %-25s\n", "Address", s1->suppAddr, s2->suppAddr);
-printf("==============================================================\n ");
+void viewSuppliers(void)
+
+{
+    int i;
+
+    if (supplierCount == 0)
+    {
+        printf("\nNo suppliers available.\n");
+        return;
+    }
+
+    printf("\n================ SUPPLIERS ================\n");
+
+    for (i = 0; i < supplierCount; i++)
+    {
+        printf("\nSupplier ID : %d\n", suppliers[i].suppID);
+        printf("Name        : %s\n", suppliers[i].suppName);
+        printf("Email 1     : %s\n", suppliers[i].suppEmail1);
+        printf("Email 2     : %s\n", suppliers[i].suppEmail2);
+        printf("Phone 1     : %s\n", suppliers[i].suppPhone1);
+        printf("Phone 2     : %s\n", suppliers[i].suppPhone2);
+        printf("Town        : %s\n", suppliers[i].suppTown);
+        printf("Address     : %s\n", suppliers[i].suppAddr);
+        printf("-------------------------------------------\n");
+    }
+}
 
 
- }
+void searchSupplier(void)
+{
+ char searchName[60];
+ int i;
+ int found = 0;
 
-else {
-printf("\nOne or more compared Supplier is not found in the directory.\n");
-printf("\n Visit Reports Section to see registered Suppliers \n ");
-printf("==============================================================\n ");
+printf("\nEnter Supplier Name: ");
+	
+ scanf(" %[^\n]", searchName);
 
-   }
-   
-  }
-  
- } 
+  for (i = 0; i < supplierCount; i++)
+    {
+        
+        if (strcmp(searchName, suppliers[i].suppName) == 0)
+        {
+            printf("Name    : %s\n", suppliers[i].suppName);
+            printf("Email   : %s\n", suppliers[i].suppEmail1);
+            printf("Phone   : %s\n", suppliers[i].suppPhone1);
+            printf("Town    : %s\n", suppliers[i].suppTown);
+            found = 1;
+            break;
+        }
+    }
 
-while (choice != 4);
+   if (!found)
+    {
+        printf("\n Supplier not in DataBase .\n");
+    }
+}
 
-printf("==============================================================\n ");
-printf("You are now Exiting the Supplier Management System\n");
-printf("==============================================================\n ");
 
+void supplierMenu(void)
+{
+    int choice;
 
+   do
+    {
+        printf("\n========================================\n");
+        printf("      SUPPLIER MANAGEMENT SYSTEM\n");
+        printf("========================================\n");
+        printf("1. Add Supplier\n");
+        printf("2. View Suppliers\n");
+        printf("3. Search Supplier\n");
+        printf("4. Exit\n");
+        printf("========================================\n");
+        printf("Enter Choice: ");
+        scanf("%d", &choice);
 
-   return 0;
-   
-   
+        switch (choice)
+        {
+            case 1:
+                addSupplier();
+                break;
+
+            case 2:
+                viewSuppliers();
+                break;
+
+            case 3:
+                searchSupplier();
+                break;
+
+            case 4:
+            printf("\n Exiting Supplier Module...\n");
+                break;
+
+            default:
+                printf("\nInvalid Choice!\n");
+        }
+
+    } while (choice != 4);
 }
