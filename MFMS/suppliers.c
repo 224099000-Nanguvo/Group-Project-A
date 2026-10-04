@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <string.h>
+#include "suppliers.h"
+#include <stdlib.h>
+
 
 typedef struct {
 int suppID;
@@ -190,6 +193,8 @@ while (choice != 4);
 printf("==============================================================\n ");
 printf("You are now Exiting the Supplier Management System\n");
 printf("==============================================================\n ");
+
+
 
    return 0;
    
