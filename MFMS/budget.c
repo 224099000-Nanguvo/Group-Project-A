@@ -137,3 +137,5 @@ void budgetMenu(){
         }
 
     } while (choice != 4);
+
+}

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "asset.h"
+#include "assets.h"
 
 Asset assets[MAX_ASSETS];
 int assetCount = 0;

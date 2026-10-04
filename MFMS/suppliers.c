@@ -16,7 +16,7 @@ char suppAddr[50];
 char searchName [60];
 
 
-} Supplier;
+} 
 
 Supplier suppliers[60];  
 int supplierCount = 0;

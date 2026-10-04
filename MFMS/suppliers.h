@@ -25,7 +25,7 @@ typedef struct {
 } Supplier;
 
 
-extern Supplier suppliers[MAX_SUPPLIERS];
+extern Supplier supplier[MAX_SUPPLIERS];
 extern int supplierCount;
 
 
