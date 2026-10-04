@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 void budgetMenu(void);
 void addBudget(void);
 void displayBudgets(void);
