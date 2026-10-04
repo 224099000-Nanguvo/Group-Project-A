@@ -1,12 +1,10 @@
 #include <stdio.h>
 #include <string.h>
-#include "asset.h"
+#include "assets.h"
 
 Asset assets[MAX_ASSETS];
 int assetCount = 0;
 
-Asset assets[MAX_ASSETS];
-int assetCount = 0;
 
 int readint(const char *prompt, int min, int max) {
     int value;

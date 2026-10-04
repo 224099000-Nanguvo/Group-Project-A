@@ -12,4 +12,4 @@ void displayBudgets(void);
 void displayBudgetReport(void);
 double calculateBudget(double budget, double expenditure);
 
-#endif;
+#endif

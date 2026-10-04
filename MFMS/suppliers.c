@@ -1,19 +1,125 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "suppliers.h"
+#include "supplier.h"
+#include <stdlib.h>
 
 Supplier suppliers[MAX_SUPPLIERS];
 
 
 int supplierCount = 0;
 
+} 
 
 void addSupplier(void);
 void viewSuppliers(void);
 void searchSupplier(void);
 void supplierMenu(void);
 
+int main() {
+int choice;
+
+ do {
+printf("\n Supplier Management System Menu \n");
+printf("==============================================================\n ");
+printf("1. Add New Supplier\n");
+printf("2. Search For a Registered Supplier\n");
+printf("3. Compare Two Suppliers\n");
+printf("4. Exit  \n");
+printf("==============================================================\n ");
+printf("Select choice: ");
+
+
+ if (scanf("%d", &choice) != 1) {
+ printf("Invalid choice.\n");
+ return 1;
+ }
+ getchar();
+
+  if (choice == 1) {
+  Supplier s;
+  s.suppID = supplierCount + 1;
+
+ printf("\n WELCOME TO SUPPLIER REGISTRATION SECTION \n");
+ printf("==============================================================\n ");
+ 
+ 
+ printf("\n Supplier Name :  ");
+ fgets(s.suppName, sizeof(s.suppName), stdin);
+ s.suppName[strcspn(s.suppName, "\n")] = '\0';
+
+ printf("\n Supplier first Email :  ");
+ fgets(s.suppEmail1, sizeof(s.suppEmail1), stdin);
+ s.suppEmail1[strcspn(s.suppEmail1, "\n")] = '\0';
+
+printf("\n Supplier Second Optional Email : ");
+fgets(s.suppEmail2, sizeof(s.suppEmail2), stdin);
+s.suppEmail2[strcspn(s.suppEmail2, "\n")] = '\0';
+
+printf("Supplier Office Phone Number ");
+fgets(s.suppPhone1, sizeof(s.suppPhone1), stdin);
+s.suppPhone1[strcspn(s.suppPhone1, "\n")] = '\0';
+
+printf("Supplier Second Optional Tell/Cell Number :  ");
+fgets(s.suppPhone2, sizeof(s.suppPhone2), stdin);
+s.suppPhone2[strcspn(s.suppPhone2, "\n")] = '\0';
+
+printf("Supplier Suburb / Town :  ");
+fgets(s.suppTown, sizeof(s.suppTown), stdin);
+s.suppTown[strcspn(s.suppTown, "\n")] = '\0';
+
+printf("Supplier Physical Address :  ");
+fgets(s.suppAddr, sizeof(s.suppAddr), stdin);
+s.suppAddr[strcspn(s.suppAddr, "\n")] = '\0';
+
+
+supplier[supplierCount++] = s;
+
+printf("==============================================================\n ");
+printf("\n Continue to Register Section \n");
+printf("==============================================================\n ");
+
+ }
+
+else
+
+ if (choice == 2) {
+ 
+char searchName[60];
+
+printf("==============================================================\n ");
+printf("\n Supplier Name to search: ");
+printf("==============================================================\n ");
+fgets(searchName, sizeof(searchName), stdin);
+searchName[strcspn(searchName, "\n")] = '\0';
+
+int found = 0;
+
+for (int i = 0; i < supplierCount; i++) {
+
+ if (strcmp(suppliers[i].suppName, searchName) == 0) {
+ printf("\nSUPPLIER DETAILS \n");
+ printf("==============================================================\n ");
+ printf("ID: %d\n", suppliers[i].suppID);
+ printf("Name: %s\n", suppliers[i].suppName);
+ printf("Email1: %s\n", suppliers[i].suppEmail1);
+printf("Email2: %s\n", suppliers[i].suppEmail2);
+printf("Phone1: %s\n", suppliers[i].suppPhone1);
+printf("Phone2: %s\n", suppliers[i].suppPhone2);
+printf("Town: %s\n", suppliers[i].suppTown);
+printf("Address: %s\n", suppliers[i].suppAddr);
+printf("==============================================================\n ");
+found = 1;
+break;
+
+   }
+  }
+if (!found) {
+printf("==============================================================\n ");
+printf("Supplier is Not Registered.\n");
+printf("\nIf You Would like to Register Please Visit the Main Menu\n");
+printf("\n Continue to Register Section  \n ");
+printf("==============================================================\n ");
 
 void addSupplier(void)
 {
