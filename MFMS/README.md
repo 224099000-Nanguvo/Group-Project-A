@@ -14,15 +14,15 @@
 
 Olivia Satumbu - 226142000  
 
-Hilia Katunde - 22057235
+Hilia Katunde - 224057235
 
-Kanyome Simeon - 2222020520
+Kanyome Simeon - 222020520
 
 Janet Kaindume - 222023856 
 
 Peinge Namundjebo - 211039012
 
-Elina Nakambale - 21809549
+Elina Nakambale - 218039549
 
 Pedro Nanguvo - 224099000
 
